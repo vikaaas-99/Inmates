@@ -8,7 +8,7 @@ const Product = () => {
   const { products, currency, addToCart } = useContext(ShopContext);
   const [productData, setProductData] = useState(false);
   const [image, setImage] = useState("");
-  const [size, setSize] = useState("");
+  const [sizes, setsizes] = useState("");
 
   const fetchProductData = async () => {
     products.map((item) => {
@@ -51,11 +51,11 @@ const Product = () => {
             {productData.name}
           </h1>
           <div className="flex items-center gap-1 mt-2">
-            <i class="fa-solid fa-star text-[#B39600]"></i>
-            <i class="fa-solid fa-star text-[#B39600]"></i>
-            <i class="fa-solid fa-star text-[#B39600]"></i>
-            <i class="fa-solid fa-star text-[#B39600]"></i>
-            <i class="fa-solid fa-star text-[#B39600]"></i>
+            <i className="fa-solid fa-star text-[#B39600]"></i>
+            <i className="fa-solid fa-star text-[#B39600]"></i>
+            <i className="fa-solid fa-star text-[#B39600]"></i>
+            <i className="fa-solid fa-star text-[#B39600]"></i>
+            <i className="fa-solid fa-star text-[#B39600]"></i>
             <p className="pl-2 text-[#B39600]">(122)</p>
           </div>
           <p className="mt-5 text-3xl font-medium text-[#B39600]">
@@ -66,13 +66,13 @@ const Product = () => {
             {productData.description}
           </p>
           <div className="flex flex-col gap-4 my-8">
-            <p className="text-[#B39600]">Select Size</p>
+            <p className="text-[#B39600]">Select sizes</p>
             <div className="flex gap-2">
-              {productData.size.map((item, index) => (
+              {productData.sizes.map((item, index) => (
                 <button
-                  onClick={() => setSize(item)}
+                  onClick={() => setsizes(item)}
                   className={`border py-2 px-4 bg-[#A20000] text-[#B39600] font-semibold ${
-                    item === size ? "border-4 border-[#010097]" : ""
+                    item === sizes ? "border-4 border-[#010097]" : ""
                   }`}
                   key={index}
                 >
@@ -82,7 +82,7 @@ const Product = () => {
             </div>
           </div>
           <button
-            onClick={() => addToCart(productData._id, size)}
+            onClick={() => addToCart(productData._id, sizes)}
             className="bg-black text-[#B39600]  px-8 py-3 text-sm border-2 border-[#A20000] active:bg-[#A20000]"
           >
             ADD TO CART

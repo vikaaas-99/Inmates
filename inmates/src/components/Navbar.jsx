@@ -5,7 +5,20 @@ import { ShopContext } from "../context/ShopContext";
 
 const Navbar = () => {
   const [visible, setVisible] = useState(false);
-  const { setShowSearch, getCartCount } = useContext(ShopContext);
+  const {
+    setShowSearch,
+    getCartCount,
+    navigate,
+    token,
+    setToken,
+    setCartItems,
+  } = useContext(ShopContext);
+  const logout = () => {
+    navigate("/login");
+    localStorage.removeItem("token");
+    setToken("");
+    setCartItems({});
+  };
   return (
     <div className="flex items-center justify-between py-5 font medium">
       <Link to={"/"}>
@@ -48,22 +61,32 @@ const Navbar = () => {
         ></i>
 
         <div className="group relative">
-          <Link to="/login">
-            <i className="fa-regular fa-user cursor-pointer text-[#B39600]"></i>
-          </Link>
-          <div className="group-hover:block hidden absolute dropdown-menu right-0 pt-4">
-            <div className="flex flex-col gap-2 w-36 py-3 bg-black rounded">
-              <p className="cursor-pointer   text-[#B39600] hover:bg-[#010097]">
-                My Profile
-              </p>
-              <p className="cursor-pointer text-[#B39600] hover:bg-[#010097]">
-                Orders
-              </p>
-              <p className="cursor-pointer text-[#B39600] hover:bg-[#010097]">
-                Logout
-              </p>
+          <i
+            onClick={() => (token ? null : navigate("/login"))}
+            className="fa-regular fa-user cursor-pointer text-[#B39600]"
+          ></i>
+          {/* dropdropdown */}
+          {token && (
+            <div className="group-hover:block hidden absolute dropdown-menu right-0 pt-4">
+              <div className="flex flex-col gap-2 w-36 py-3 bg-black rounded">
+                <p className="cursor-pointer   text-[#B39600] hover:bg-[#010097]">
+                  My Profile
+                </p>
+                <p
+                  onClick={() => navigate("/orders")}
+                  className="cursor-pointer text-[#B39600] hover:bg-[#010097]"
+                >
+                  Orders
+                </p>
+                <p
+                  onClick={logout}
+                  className="cursor-pointer text-[#B39600] hover:bg-[#010097]"
+                >
+                  Logout
+                </p>
+              </div>
             </div>
-          </div>
+          )}
         </div>
         <Link to="/cart" className="relative">
           <i className="fa-solid fa-cart-shopping text-[#B39600] cursor-pointer"></i>
@@ -73,7 +96,7 @@ const Navbar = () => {
         </Link>
         <i
           onClick={() => setVisible(true)}
-          class="fa-solid fa-bars text-[#B39600] cursor-pointer sm:hidden"
+          className="fa-solid fa-bars text-[#B39600] cursor-pointer sm:hidden"
         ></i>
       </div>
       {/* Sidebar menu for small screen */}

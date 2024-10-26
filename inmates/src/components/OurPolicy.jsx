@@ -10,12 +10,12 @@ const OurPolicy = () => {
         <p className="text-[#A20000]">We offer hassle free exchange policy</p>
       </div>
       <div>
-        <i class="fa-solid fa-medal text-[#A20000] fa-2x"></i>
+        <i className="fa-solid fa-medal text-[#A20000] fa-2x"></i>
         <p className="font-semibold text-[#A20000]">7 Day Return Policy</p>
         <p className="text-[#A20000]">We offer 7 days free return policy</p>
       </div>
       <div>
-        <i class="fa-solid fa-phone-volume text-[#A20000] fa-2x"></i>
+        <i className="fa-solid fa-phone-volume text-[#A20000] fa-2x"></i>
         <p className="font-semibold text-[#A20000]">Best Customer Care</p>
         <p className="text-[#A20000]">We offer 24/7 Customer care</p>
       </div>

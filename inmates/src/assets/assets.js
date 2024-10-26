@@ -32,7 +32,7 @@ export const products = [
         image: [asstss, asstss, asstss, asstss],
         category: "Men",
         subCategory: "Topwear",
-        size: ["S", "M", "L"],
+        sizes: ["S", "M", "L"],
         date: 12321,
         bestseller: true
     },
@@ -44,7 +44,7 @@ export const products = [
         image: [asstss],
         category: "Women",
         subCategory: "Bottomwear",
-        size: ["s", "m", "l"],
+        sizes: ["s", "m", "l"],
         date: 35466,
         bestseller: true
     },
@@ -56,7 +56,7 @@ export const products = [
         image: [asstss],
         category: "Men",
         subCategory: "Topwear",
-        size: ["s", "m", "l"],
+        sizes: ["s", "m", "l"],
         date: 24344,
         bestseller: true
     },
@@ -68,7 +68,7 @@ export const products = [
         image: [asstss],
         category: "Women",
         subCategory: "Winterwear",
-        size: ["s", "m", "l"],
+        sizes: ["s", "m", "l"],
         date: 34456,
         bestseller: true
     },
@@ -80,7 +80,7 @@ export const products = [
         image: [asstss],
         category: "Men",
         subCategory: "Winterwear",
-        size: ["s", "m", "l"],
+        sizes: ["s", "m", "l"],
         date: 12321,
         bestseller: true
     },
@@ -92,7 +92,7 @@ export const products = [
         image: [asstss],
         category: "Women",
         subCategory: "Topwear",
-        size: ["s", "m", "l"],
+        sizes: ["s", "m", "l"],
         date: 35466,
         bestseller: true
     },
@@ -104,7 +104,7 @@ export const products = [
         image: [asstss],
         category: "Men",
         subCategory: "Bottomwear",
-        size: ["s", "m", "l"],
+        sizes: ["s", "m", "l"],
         date: 24344,
         bestseller: true
     },
@@ -116,7 +116,7 @@ export const products = [
         image: [asstss],
         category: "Women",
         subCategory: "Winterwear",
-        size: ["s", "m", "l"],
+        sizes: ["s", "m", "l"],
         date: 34456,
         bestseller: true
     },
@@ -129,7 +129,7 @@ export const products = [
         image: [asstss],
         category: "Women",
         subCategory: "Topwear",
-        size: ["s", "m", "l"],
+        sizes: ["s", "m", "l"],
         date: 24344,
         bestseller: true
     },
@@ -141,7 +141,7 @@ export const products = [
         image: [asstss],
         category: "Men",
         subCategory: "Bottomwear",
-        size: ["s", "m", "l"],
+        sizes: ["s", "m", "l"],
         date: 34456,
         bestseller: true
     },
