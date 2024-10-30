@@ -64,7 +64,7 @@ const About = () => {
           </p>
         </div>
       </div>
-      <NewsletterBox></NewsletterBox>
+      {/* <NewsletterBox></NewsletterBox> */}
     </div>
   );
 };

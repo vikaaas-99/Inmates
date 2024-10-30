@@ -23,7 +23,7 @@ const Contact = () => {
           <p className="text-[#B39600]">Instagram</p>
         </div>
       </div>
-      <NewsletterBox></NewsletterBox>
+      {/* <NewsletterBox></NewsletterBox> */}
     </div>
   );
 };

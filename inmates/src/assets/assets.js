@@ -8,6 +8,7 @@ import p_img32 from './p_img32.png'
 import razorpay_logo from './razorpay_logo.png'
 import stripe_logo from './stripe_logo.png'
 import phone from './phone.png'
+import ccavenue_logo from './ccavenue_logo.png'
 
 
 
@@ -21,6 +22,7 @@ export const assets = {
     razorpay_logo,
     stripe_logo,
     phone,
+    ccavenue_logo,
 }
 
 export const products = [
