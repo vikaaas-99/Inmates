@@ -3,7 +3,7 @@ import orderModel from "../models/orderModel.js"
 import userModel from "../models/userModel.js"
 import Stripe from 'stripe'
 import razorpay from 'razorpay'
-import CCAvenue from 'ccavenue';
+import * as ccavRequestHandler from '../New_NodeJS_NonSeamless/ccavRequestHandler.js'
 
 
 // console.log(CCAvenue)
@@ -181,10 +181,30 @@ const verfyRazorpay = async (req, res) => {
 
 
 export const placeOrderCcavenue = async (req, res) => {
-
+    console.log("placeOrderCcavenue");
+    try {
+        const formData = {
+            order_id: "123",
+            merchant_id: parseInt(process.env.CCAVENUE_MERCHANT_ID),
+            currency: 'INR',
+            amount: 300,
+            redirect_url: `/api/order/verifyCcavenue`,
+            cancel_url: `/api/cart/list`,
+            language: 'EN',
+            upiPaymentFlag: 'QR',
+        }
+        const req = {
+            body: formData,
+        };
+        ccavRequestHandler.postReq(req, res); // Redirects to CCAvenue's payment page
+    } catch (error) {
+        console.error("Error in placeOrderCcavenue:", error);
+        res.status(500).json({ success: false, message: "Payment processing failed" });
+    }
 };
 
 export const verifyCcavenue = async (req, res) => {
+    console.log("verifyCcavenue");
 
 };
 
