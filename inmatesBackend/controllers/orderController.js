@@ -3,9 +3,10 @@ import orderModel from "../models/orderModel.js"
 import userModel from "../models/userModel.js"
 import Stripe from 'stripe'
 import razorpay from 'razorpay'
-import CCAvenue from 'ccavenue'
+import CCAvenue from 'ccavenue';
 
-console.log(CCAvenue)
+
+// console.log(CCAvenue)
 
 //global variabels
 const currency = 'inr'
@@ -175,56 +176,21 @@ const verfyRazorpay = async (req, res) => {
 
     }
 }
-// Place Order using CCAvenue
-const placeOrderCcavenue = async (req, res) => {
-    try {
-        const { userId, items, amount, address } = req.body;
-        const orderData = {
-            userId,
-            items,
-            amount,
-            address,
-            paymentMethod: "Ccavenue",
-            payment: false,
-            date: Date.now(),
-        };
 
-        const newOrder = new orderModel(orderData);
-        await newOrder.save();
 
-        // Set CCAvenue configuration
-        CCAvenue.setMerchant(process.env.CCAVENUE_MERCHANT_ID);
-        CCAvenue.setWorkingKey(process.env.CCAVENUE_WORKING_KEY);
-        CCAvenue.setOrderId(newOrder._id.toString());
-        CCAvenue.setRedirectUrl('http://localhost:4000/verifyCcavenue');
-        CCAvenue.setOrderAmount(amount * 100); // Converting to smaller currency unit if needed
 
-        // Redirect to CCAvenue payment page
-        const paymentUrl = CCAvenue.makePayment();
-        res.json({ success: true, paymentUrl });
-    } catch (error) {
-        console.log(error);
-        res.json({ success: false, message: error.message });
-    }
+
+export const placeOrderCcavenue = async (req, res) => {
+
 };
 
-// Verify Order using CCAvenue
-const verifyCcavenue = async (req, res) => {
-    try {
-        const { orderId, success, userId } = req.query; // Get params from redirect URL
-        if (success === "true") {
-            await orderModel.findByIdAndUpdate(orderId, { payment: true });
-            await userModel.findByIdAndUpdate(userId, { cartData: {} });
-            res.json({ success: true, message: "Payment Successful" });
-        } else {
-            await orderModel.findByIdAndDelete(orderId);
-            res.json({ success: false, message: "Payment Failed" });
-        }
-    } catch (error) {
-        console.log(error);
-        res.json({ success: false, message: error.message });
-    }
+export const verifyCcavenue = async (req, res) => {
+
 };
+
+
+
+
 
 
 //All Orders data for Admin Panel
@@ -264,4 +230,4 @@ const updateStatus = async (req, res) => {
     }
 }
 
-export { verifyStripe, verfyRazorpay, placeOrder, placeOrderStripe, placeOrderRazorpay, placeOrderCcavenue, verifyCcavenue, allOrders, userOrders, updateStatus }
+export { verifyStripe, verfyRazorpay, placeOrder, placeOrderStripe, placeOrderRazorpay, allOrders, userOrders, updateStatus }

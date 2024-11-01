@@ -163,17 +163,36 @@ const PlaceOrder = () => {
           break;
 
         //cc
+        // case "ccavenue":
+        //   const responseCCAvenue = await axios.post(
+        //     backendUrl + "/api/order/ccavenue",
+        //     orderData,
+        //     { headers: { token } }
+        //   );
+        //   if (responseCCAvenue.data.success) {
+        //     const { ccavenue_url } = responseCCAvenue.data;
+        //     window.location.replace(ccavenue_url);
+        //   } else {
+        //     toast.error(responseCCAvenue.data.message);
+        //   }
+        //   break;
         case "ccavenue":
-          const responseCCAvenue = await axios.post(
-            backendUrl + "/api/order/ccavenue",
-            orderData,
-            { headers: { token } }
-          );
-          if (responseCCAvenue.data.success) {
-            const { ccavenue_url } = responseCCAvenue.data;
-            window.location.replace(ccavenue_url);
-          } else {
-            toast.error(responseCCAvenue.data.message);
+          try {
+            const responseCCAvenue = await axios.post(
+              backendUrl + "/api/order/placeOrderCcavenue", // Ensure this matches your backend route
+              orderData,
+              { headers: { token } }
+            );
+
+            if (responseCCAvenue.data.success) {
+              const { paymentUrl } = responseCCAvenue.data; // Use the correct key from the response
+              window.location.replace(paymentUrl); // Redirect to CCAvenue payment page
+            } else {
+              toast.error(responseCCAvenue.data.message);
+            }
+          } catch (error) {
+            console.error("Payment request failed:", error);
+            toast.error("An error occurred while processing your payment."); // Handle errors gracefully
           }
           break;
 

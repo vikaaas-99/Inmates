@@ -1,5 +1,6 @@
 import React from "react";
 import { assets } from "../assets/assets";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -8,19 +9,21 @@ const Footer = () => {
         <div>
           <img src={assets.inmateslogo} alt="" className="mb-5 w-32" />
           <p className="w-full md:w-2/3 text-[#B39600]">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores,
-            natus doloribus. Aut voluptates veritatis delectus quod porro dolore
-            animi, obcaecati quia ut iure velit tenetur eveniet officia deleniti
-            consequuntur vero!
+            If it's illegal to wear what I like then, throw my ass in jail!
           </p>
         </div>
         <div>
           <p className="text-xl font-medium mb-5 text-[#B39600]">COMPANY</p>
           <ul className="flex flex-col gap-1 text-[#B39600]">
-            <li>Home</li>
-            <li>About</li>
-            <li>Delivery</li>
-            <li>Privacy Policy</li>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/about">T&C</Link>
+            </li>
+            <li>
+              <Link to="/orders">Orders</Link>
+            </li>
           </ul>
         </div>
         <div>

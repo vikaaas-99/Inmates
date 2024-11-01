@@ -43,7 +43,7 @@ const Navbar = () => {
           to="/about"
           className="flex flex-col items-center gap-1 text-[#B39600]"
         >
-          <p>ABOUT</p>
+          <p> T&C </p>
           <hr className="w-2/4 border-none h-[1.5px]  hidden" />
         </NavLink>
         <NavLink

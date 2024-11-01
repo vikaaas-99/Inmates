@@ -31,7 +31,7 @@ const Hero = () => {
         </div>
       </div>
       {/* Hero RightSide */}
-      <img className="w-full sm:w-1/2" src={assets.asstss} alt="" />
+      <img className="w-full sm:w-1/2" src={assets.hero_home} alt="" />
     </div>
   );
 };

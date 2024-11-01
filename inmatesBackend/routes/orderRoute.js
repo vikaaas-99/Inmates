@@ -12,7 +12,7 @@ orderRouter.post('/status', adminAuth, updateStatus)
 orderRouter.post('/place', authUser, placeOrder)
 orderRouter.post('/stripe', authUser, placeOrderStripe)
 orderRouter.post('/razorpay', authUser, placeOrderRazorpay)
-orderRouter.post('/ccavenue', authUser, placeOrderCcavenue)
+
 
 //User Feature
 orderRouter.post('/userorders', authUser, userOrders)
@@ -20,6 +20,8 @@ orderRouter.post('/userorders', authUser, userOrders)
 //Verify Payment
 orderRouter.post('/verifyStripe', authUser, verifyStripe)
 orderRouter.post('/verifyRazorpay', authUser, verfyRazorpay)
-orderRouter.post('/verifyCcavenue', authUser, verifyCcavenue)
 
+// CCAvenue routes
+orderRouter.post('/placeOrderCcavenue', authUser, placeOrderCcavenue);
+orderRouter.get('/verifyCcavenue', authUser, verifyCcavenue);
 export default orderRouter

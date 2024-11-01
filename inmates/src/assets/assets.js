@@ -9,6 +9,7 @@ import razorpay_logo from './razorpay_logo.png'
 import stripe_logo from './stripe_logo.png'
 import phone from './phone.png'
 import ccavenue_logo from './ccavenue_logo.png'
+import hero_home from './hero_home.jpg'
 
 
 
@@ -23,6 +24,7 @@ export const assets = {
     stripe_logo,
     phone,
     ccavenue_logo,
+    hero_home
 }
 
 export const products = [
