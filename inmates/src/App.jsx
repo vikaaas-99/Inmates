@@ -1,5 +1,5 @@
 import React from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import Home from "./pages/home";
 import Collection from "./pages/Collection";
 import About from "./pages/About";
@@ -18,11 +18,15 @@ import "react-toastify/dist/ReactToastify.css";
 import Verify from "./pages/Verify";
 
 const App = () => {
+  const location = useLocation(); // Get the current location
   return (
     <div className="px-4 sm:px-[5vw] md:px-[7vw] lg:px-[9vw]">
       <ToastContainer></ToastContainer>
-      <Navbar></Navbar>
-      <SearchBar></SearchBar>
+      {location.pathname !== "/login" && <Navbar />}
+      {location.pathname !== "/login" && <SearchBar />}
+
+      {/* <Navbar></Navbar>
+      <SearchBar></SearchBar> */}
       <Routes>
         <Route path="/" element={<Home></Home>}></Route>
         <Route path="/collection" element={<Collection></Collection>}></Route>
@@ -36,7 +40,8 @@ const App = () => {
         <Route path="/orders" element={<Orders></Orders>}></Route>
         <Route path="/verify" element={<Verify></Verify>}></Route>
       </Routes>
-      <Footer></Footer>
+      {/* <Footer></Footer> */}
+      {location.pathname !== "/login" && <Footer />}
     </div>
   );
 };

@@ -15,7 +15,47 @@ const ShopContextProvider = (props) => {
   const [cartItems, setCartItems] = useState({});
   const [products, setProducts] = useState([]);
   const [token, setToken] = useState("");
+  const [reviews, setReviews] = useState([]); // State for reviews
   const navigate = useNavigate();
+
+  // Fetch reviews for a specific product
+  const fetchReviews = async (productId) => {
+    try {
+      const response = await axios.get(
+        backendUrl + `/api/review/product/${productId}`
+      );
+      if (response.data.success) {
+        setReviews(response.data.reviews);
+      } else {
+        toast.error(response.data.message);
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error(error.message);
+    }
+  };
+
+  // Add a review
+  const addReview = async (productId, rating, comment) => {
+    try {
+      const response = await axios.post(
+        backendUrl + "/api/review/add",
+        { productId, rating, comment },
+        { headers: { token } } // Include the token for authorization
+      );
+
+      if (response.data.success) {
+        toast.success(response.data.message);
+        // Optionally refetch reviews for the product after adding a new review
+        fetchReviews(productId);
+      } else {
+        toast.error(response.data.message);
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error(error.message);
+    }
+  };
 
   const addToCart = async (itemId, size) => {
     if (!size) {
@@ -162,6 +202,9 @@ const ShopContextProvider = (props) => {
     backendUrl,
     token,
     setToken,
+    fetchReviews,
+    reviews,
+    addReview,
   };
 
   return (

@@ -69,9 +69,9 @@ const Navbar = () => {
           {token && (
             <div className="group-hover:block hidden absolute dropdown-menu right-0 pt-4">
               <div className="flex flex-col gap-2 w-36 py-3 bg-black rounded">
-                <p className="cursor-pointer   text-[#B39600] hover:bg-[#010097]">
+                {/* <p className="cursor-pointer   text-[#B39600] hover:bg-[#010097]">
                   My Profile
-                </p>
+                </p> */}
                 <p
                   onClick={() => navigate("/orders")}
                   className="cursor-pointer text-[#B39600] hover:bg-[#010097]"
